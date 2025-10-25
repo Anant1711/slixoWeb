@@ -54,10 +54,24 @@ export const Hero = () => {
 
         {/* Split hero images */}
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto animate-scale-in" style={{ animationDelay: "0.3s" }}>
-          <div className="relative rounded-2xl overflow-hidden shadow-xl hover:shadow-glow transition-smooth group">
-            <img 
-              src={heroCustomer} 
-              alt="Happy customer booking salon appointment" 
+          <div
+            role="button"
+            tabIndex={0}
+            onClick={() => {
+              document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" });
+              window.dispatchEvent(new CustomEvent("slixo:howitworks", { detail: "customers" }));
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" });
+                window.dispatchEvent(new CustomEvent("slixo:howitworks", { detail: "customers" }));
+              }
+            }}
+            className="relative rounded-2xl overflow-hidden shadow-xl hover:shadow-glow transition-smooth group cursor-pointer"
+          >
+            <img
+              src={heroCustomer}
+              alt="Happy customer booking salon appointment"
               className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent flex items-end p-6">
@@ -67,11 +81,25 @@ export const Hero = () => {
               </div>
             </div>
           </div>
-          
-          <div className="relative rounded-2xl overflow-hidden shadow-xl hover:shadow-glow transition-smooth group">
-            <img 
-              src={heroOwner} 
-              alt="Salon owner managing bookings" 
+
+          <div
+            role="button"
+            tabIndex={0}
+            onClick={() => {
+              document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" });
+              window.dispatchEvent(new CustomEvent("slixo:howitworks", { detail: "owners" }));
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" });
+                window.dispatchEvent(new CustomEvent("slixo:howitworks", { detail: "owners" }));
+              }
+            }}
+            className="relative rounded-2xl overflow-hidden shadow-xl hover:shadow-glow transition-smooth group cursor-pointer"
+          >
+            <img
+              src={heroOwner}
+              alt="Salon owner managing bookings"
               className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent flex items-end p-6">

@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Search, Calendar, Sparkles, FileText, Settings, TrendingUp } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 
 export const HowItWorks = () => {
+  const [active, setActive] = useState<string>("customers");
+
   const customerSteps = [
     {
       icon: Search,
@@ -46,15 +48,28 @@ export const HowItWorks = () => {
     },
   ];
 
+  // Listen for external triggers from other components (e.g., Hero)
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const ev = e as CustomEvent<string>;
+      if (ev && (ev.detail === "customers" || ev.detail === "owners")) {
+        setActive(ev.detail);
+      }
+    };
+
+    window.addEventListener("slixo:howitworks", handler as EventListener);
+    return () => window.removeEventListener("slixo:howitworks", handler as EventListener);
+  }, []);
+
   return (
-    <section className="py-20 bg-background">
+    <section id="how-it-works" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">How It Works</h2>
           <p className="text-xl text-muted-foreground">Simple steps to get started</p>
         </div>
 
-        <Tabs defaultValue="customers" className="max-w-5xl mx-auto">
+  <Tabs value={active} onValueChange={(v) => setActive(v)} className="max-w-5xl mx-auto">
           <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-12">
             <TabsTrigger value="customers" className="text-lg">For Customers</TabsTrigger>
             <TabsTrigger value="owners" className="text-lg">For Salon Owners</TabsTrigger>
