@@ -1,4 +1,5 @@
 import { Facebook, Instagram, Twitter, Linkedin, Heart } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
   const footerLinks = {
@@ -95,12 +96,21 @@ export const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.legal.map((link, index) => (
                 <li key={index}>
-                  <a 
-                    href={link.href} 
-                    className="text-background/70 hover:text-primary transition-smooth text-sm"
-                  >
-                    {link.name}
-                  </a>
+                  {link.href && link.href.startsWith("/") ? (
+                    <Link
+                      to={link.href}
+                      className="text-background/70 hover:text-primary transition-smooth text-sm"
+                    >
+                      {link.name}
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className="text-background/70 hover:text-primary transition-smooth text-sm"
+                    >
+                      {link.name}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
