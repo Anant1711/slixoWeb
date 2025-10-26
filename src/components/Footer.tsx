@@ -7,7 +7,7 @@ export const Footer = () => {
       { name: "Download App", href: "#" },
       { name: "How It Works", href: "#how-it-works" },
       { name: "Find Salons", href: "#" },
-      { name: "Support", href: "#" },
+      { name: "Support", href: "mailto:slixoapp@gmail.com" },
     ],
     owners: [
       { name: "Download App", href: "#" },
@@ -18,8 +18,7 @@ export const Footer = () => {
     legal: [
       { name: "Privacy Policy", href: "/privacy-policy" },
       { name: "Terms of Service", href: "/terms-of-service" },
-      { name: "Contact Us", href: "#" },
-      { name: "Help Center", href: "#" },
+      { name: "Contact Us", href: "mailto:slixoapp@gmail.com" },
     ],
   };
 

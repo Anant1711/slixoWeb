@@ -265,7 +265,7 @@ export default function TermsOfService() {
               
               <div className="bg-primary/10 p-6 rounded-lg">
                 <p className="text-foreground/80 mb-3">If you have questions about these Terms & Conditions, please contact us:</p>
-                <p className="text-foreground mb-2"><strong>Email</strong>: support@slixo.app</p>
+                <p className="text-foreground mb-2"><strong>Email</strong>: slixoapp@gmail.com</p>
                 <p className="text-foreground/80"><strong>Response Time</strong>: We aim to respond within 48 hours</p>
               </div>
             </div>
