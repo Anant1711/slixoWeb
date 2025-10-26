@@ -37,8 +37,8 @@ export default function PrivacyPolicy() {
               <h3 className="text-xl font-semibold text-foreground mb-3 mt-6">1.1 Personal Information You Provide</h3>
               <p className="text-foreground/80 mb-3">We collect information that you voluntarily provide when using the App:</p>
               <ul className="list-disc ml-6 space-y-2 text-foreground/80">
-                <li><strong className="text-foreground">Account Information</strong>: Email address, name, phone number (optional)</li>
-                <li><strong className="text-foreground">Profile Information</strong>: Date of birth, gender, hair type, skin type, profile picture</li>
+                <li><strong className="text-foreground">Account Information</strong>: Email address, name, profile picture, phone number (optional)</li>
+                {/* <li><strong className="text-foreground">Profile Information</strong>: Date of birth, gender, hair type, skin type, profile picture</li> */}
                 <li><strong className="text-foreground">Booking Information</strong>: Appointment details, service preferences, booking history</li>
                 <li><strong className="text-foreground">Payment Information</strong>: We do not store payment card details directly</li>
                 <li><strong className="text-foreground">Reviews and Ratings</strong>: Comments, ratings, and photos you share about salons</li>
