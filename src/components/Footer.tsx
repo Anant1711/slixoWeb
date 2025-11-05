@@ -60,12 +60,21 @@ export const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.customers.map((link, index) => (
                 <li key={index}>
-                  <a 
-                    href={link.href} 
-                    className="text-background/70 hover:text-primary transition-smooth text-sm"
-                  >
-                    {link.name}
-                  </a>
+                  {link.href && link.href.startsWith("/") ? (
+                    <Link
+                      to={link.href}
+                      className="text-background/70 hover:text-primary transition-smooth text-sm"
+                    >
+                      {link.name}
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className="text-background/70 hover:text-primary transition-smooth text-sm"
+                    >
+                      {link.name}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
@@ -77,12 +86,21 @@ export const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.owners.map((link, index) => (
                 <li key={index}>
-                  <a 
-                    href={link.href} 
-                    className="text-background/70 hover:text-primary transition-smooth text-sm"
-                  >
-                    {link.name}
-                  </a>
+                  {link.href && link.href.startsWith("/") ? (
+                    <Link
+                      to={link.href}
+                      className="text-background/70 hover:text-primary transition-smooth text-sm"
+                    >
+                      {link.name}
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className="text-background/70 hover:text-primary transition-smooth text-sm"
+                    >
+                      {link.name}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
