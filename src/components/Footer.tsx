@@ -1,26 +1,29 @@
 import { Facebook, Instagram, Twitter, Heart } from "lucide-react";
 import { Link } from "react-router-dom";
+import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/store-links";
 
 export const Footer = () => {
   const footerLinks = {
     customers: [
-      { name: "Download App", href: "#" },
-      { name: "How It Works", href: "#how-it-works" },
-      { name: "Find Salons", href: "#" },
-      { name: "Support", href: "/support" },
+      { name: "Download iOS App", href: APP_STORE_URL, external: true },
+      { name: PLAY_STORE_URL ? "Get Android App" : "Android Coming Soon", href: PLAY_STORE_URL || "", external: !!PLAY_STORE_URL },
+      { name: "How It Works", href: "#how-it-works", external: false },
+      { name: "Find Salons", href: "#", external: false },
+      { name: "Support", href: "/support", external: false },
     ],
     owners: [
-      { name: "Download App", href: "#" },
-      { name: "Manage Your Salon", href: "#" },
-      { name: "Features", href: "#" },
-      { name: "Resources", href: "#" },
+      { name: "Download iOS App", href: APP_STORE_URL, external: true },
+      { name: PLAY_STORE_URL ? "Get Android App" : "Android Coming Soon", href: PLAY_STORE_URL || "", external: !!PLAY_STORE_URL },
+      { name: "Manage Your Salon", href: "#", external: false },
+      { name: "Features", href: "#", external: false },
+      { name: "Resources", href: "#", external: false },
     ],
     legal: [
       { name: "Privacy Policy", href: "/privacy-policy" },
       { name: "Terms of Service", href: "/terms-of-service" },
       { name: "Contact Us", href: "/support" },
     ],
-  };
+  } as const;
 
   const socialLinks = [
     { icon: Instagram, href: "https://www.instagram.com/slixo.official/", label: "Instagram" },
@@ -60,7 +63,20 @@ export const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.customers.map((link, index) => (
                 <li key={index}>
-                  {link.href && link.href.startsWith("/") ? (
+                  {link.external ? (
+                    link.href ? (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-background/70 hover:text-primary transition-smooth text-sm"
+                      >
+                        {link.name}
+                      </a>
+                    ) : (
+                      <span className="text-background/40 text-sm cursor-not-allowed">{link.name}</span>
+                    )
+                  ) : link.href.startsWith("/") ? (
                     <Link
                       to={link.href}
                       className="text-background/70 hover:text-primary transition-smooth text-sm"
@@ -86,7 +102,20 @@ export const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.owners.map((link, index) => (
                 <li key={index}>
-                  {link.href && link.href.startsWith("/") ? (
+                  {link.external ? (
+                    link.href ? (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-background/70 hover:text-primary transition-smooth text-sm"
+                      >
+                        {link.name}
+                      </a>
+                    ) : (
+                      <span className="text-background/40 text-sm cursor-not-allowed">{link.name}</span>
+                    )
+                  ) : link.href.startsWith("/") ? (
                     <Link
                       to={link.href}
                       className="text-background/70 hover:text-primary transition-smooth text-sm"

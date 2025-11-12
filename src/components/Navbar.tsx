@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
+import { APP_STORE_URL } from "@/lib/store-links";
 import logo from "@/assets/slixo-logo.png";
 
 export const Navbar = () => {
@@ -20,12 +21,20 @@ export const Navbar = () => {
           </div>
 
           {/* Download Button */}
-          <Button 
+          <Button
+            asChild
             size="lg"
             className="gradient-primary text-white shadow-lg hover:shadow-glow transition-smooth"
           >
-            <Download className="mr-2 h-5 w-5" />
-            Download App
+            <a
+              href={APP_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Download the Slixo app from the Apple App Store"
+            >
+              <Download className="mr-2 h-5 w-5" />
+              Download App
+            </a>
           </Button>
         </div>
       </div>

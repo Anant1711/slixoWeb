@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Smartphone, Store } from "lucide-react";
+import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/store-links";
 import appMockup from "@/assets/app-mockup.png";
 
 export const CTA = () => {
@@ -23,19 +24,40 @@ export const CTA = () => {
             {/* Download Buttons */}
             <div className="mb-8">
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
-                <Button 
-                  size="lg" 
+                <Button
+                  asChild
+                  size="lg"
                   variant="secondary"
                   className="bg-white text-primary hover:bg-white/90 shadow-lg"
                 >
-                  Download on App Store
+                  <a
+                    href={APP_STORE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Download Slixo on the Apple App Store"
+                  >
+                    Download on App Store
+                  </a>
                 </Button>
-                <Button 
-                  size="lg" 
+                <Button
+                  asChild
+                  size="lg"
                   variant="secondary"
-                  className="bg-white text-primary hover:bg-white/90 shadow-lg"
+                  className="bg-white text-primary hover:bg-white/90 shadow-lg disabled:opacity-60"
+                  disabled={!PLAY_STORE_URL}
                 >
-                  Get it on Google Play
+                  {PLAY_STORE_URL ? (
+                    <a
+                      href={PLAY_STORE_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Get Slixo on Google Play"
+                    >
+                      Get it on Google Play
+                    </a>
+                  ) : (
+                    <span>Coming Soon on Google Play</span>
+                  )}
                 </Button>
               </div>
             </div>

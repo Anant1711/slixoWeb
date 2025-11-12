@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Download, MapPin, Sparkles } from "lucide-react";
+import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/store-links";
 import heroCustomer from "@/assets/hero-customer.jpg";
 import heroOwner from "@/assets/hero-owner.jpg";
 
@@ -34,20 +35,44 @@ export const Hero = () => {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button 
-              size="lg" 
+            <Button
+              asChild
+              size="lg"
               className="gradient-primary text-white shadow-lg hover:shadow-glow transition-smooth hover:scale-105 group"
             >
-              <Download className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
-              Download on App Store
+              <a
+                href={APP_STORE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Download Slixo on the Apple App Store"
+              >
+                <Download className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
+                Download on App Store
+              </a>
             </Button>
-            <Button 
-              size="lg" 
+            <Button
+              asChild
+              size="lg"
               variant="outline"
-              className="border-2 border-primary bg-background hover:bg-primary-light transition-smooth hover:scale-105"
+              className="border-2 border-primary bg-background hover:bg-primary-light transition-smooth hover:scale-105 disabled:opacity-60"
+              disabled={!PLAY_STORE_URL}
             >
-              <Download className="mr-2 h-5 w-5" />
-              Get it on Google Play
+              {PLAY_STORE_URL ? (
+                <a
+                  href={PLAY_STORE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Get Slixo on Google Play"
+                >
+                  <Download className="mr-2 h-5 w-5" />
+                  Get it on Google Play
+                </a>
+              ) : (
+                <span className="flex items-center">
+                  <Download className="mr-2 h-5 w-5" />
+                  Coming Soon on Google Play
+                </span>
+              )}
             </Button>
           </div>
         </div>
