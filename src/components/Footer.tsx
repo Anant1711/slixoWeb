@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Twitter, Heart } from "lucide-react";
+import { Facebook, Instagram, Twitter, Heart, Linkedin } from "lucide-react";
 import { Link } from "react-router-dom";
 import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/store-links";
 
@@ -29,6 +29,7 @@ export const Footer = () => {
     { icon: Instagram, href: "https://www.instagram.com/slixo.official/", label: "Instagram" },
     { icon: Facebook, href: "https://www.facebook.com/share/17MgHc5iqr/?mibextid=wwXIfr", label: "Facebook" },
     { icon: Twitter, href: "https://x.com/slixoofficial?s=21", label: "Twitter" },
+    { icon: Linkedin, href: "https://www.linkedin.com/company/slixo/", label: "LinkedIn" },
   ];
 
   return (
