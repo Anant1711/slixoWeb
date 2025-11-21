@@ -6,75 +6,69 @@ export const Features = () => {
     {
       icon: MapPin,
       title: "Location-Based Discovery",
-      description: "Find salons near you with accurate distance calculation",
+      description: "Find elite salons near you with precision.",
       color: "primary",
     },
     {
       icon: Zap,
-      title: "Real-Time Availability",
-      description: "See available time slots and book instantly",
+      title: "Real-Time Booking",
+      description: "Instant confirmation for your preferred slots.",
       color: "secondary",
     },
     {
       icon: Star,
-      title: "Ratings & Reviews",
-      description: "Read authentic reviews from verified customers",
+      title: "Verified Excellence",
+      description: "Curated ratings from authentic experiences.",
       color: "accent",
     },
     {
       icon: Palette,
-      title: "Service Variety",
-      description: "Browse haircuts, styling, spa, and beauty services",
+      title: "Premium Services",
+      description: "From styling to spa, access the best.",
       color: "primary",
     },
     {
       icon: Users,
-      title: "Worker Selection",
-      description: "Choose your preferred stylist or any available",
+      title: "Expert Stylists",
+      description: "Choose your professional by portfolio.",
       color: "secondary",
     },
     {
       icon: Lock,
-      title: "Secure & Simple",
-      description: "Email authentication with OTP - safe and hassle-free",
+      title: "Secure Platform",
+      description: "Enterprise-grade security for your data.",
       color: "accent",
     },
   ];
 
-  const getColorClasses = (color: string) => {
-    const colors = {
-      primary: "bg-primary/10 text-primary hover:bg-primary/20",
-      secondary: "bg-secondary/10 text-secondary hover:bg-secondary/20",
-      accent: "bg-accent/10 text-accent hover:bg-accent/20",
-    };
-    return colors[color as keyof typeof colors];
-  };
-
   return (
-    <section className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Key Features</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Everything you need for a seamless salon booking experience
+    <section className="py-32 bg-background relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/5 via-background to-background opacity-50"></div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center mb-20 animate-fade-in">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <span className="text-gold">Excellence</span> in Every Detail
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-light">
+            Designed for those who demand the best in beauty and wellness.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <Card 
+            <Card
               key={index}
-              className="border-none shadow-md hover:shadow-xl transition-smooth hover:-translate-y-1 animate-fade-in-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="glass-panel border-none hover:bg-white/10 transition-all duration-500 group hover:-translate-y-2"
             >
-              <CardContent className="pt-6">
-                <div 
-                  className={`w-14 h-14 rounded-xl ${getColorClasses(feature.color)} flex items-center justify-center mb-4 transition-smooth`}
+              <CardContent className="pt-8 pb-8 px-8">
+                <div
+                  className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500"
                 >
-                  <feature.icon className="w-7 h-7" />
+                  <feature.icon className="w-7 h-7 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
+                <h3 className="text-xl font-bold mb-3 text-white group-hover:text-primary transition-colors">{feature.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
               </CardContent>
             </Card>
           ))}

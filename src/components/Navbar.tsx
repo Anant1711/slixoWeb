@@ -1,21 +1,22 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import { Download } from "lucide-react";
 import { APP_STORE_URL } from "@/lib/store-links";
-import logo from "@/assets/slixo-logo.png";
+import logo from "@/assets/slixowhite.png";
 
 export const Navbar = () => {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/50 backdrop-blur-xl border-b border-white/5">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo and Brand */}
-          <div className="flex items-center gap-3">
-            <img 
-              src={logo} 
-              alt="Slixo Logo" 
-              className="w-10 h-10 object-contain"
+          <div className="flex items-center gap-3 group cursor-pointer">
+            <img
+              src={logo}
+              alt="Slixo Logo"
+              className="w-10 h-10 object-contain drop-shadow-lg group-hover:scale-110 transition-smooth"
             />
-            <span className="text-2xl font-bold bg-gradient-accent bg-clip-text text-transparent">
+            <span className="text-2xl font-bold text-gold tracking-tight">
               SLIXO
             </span>
           </div>
@@ -24,7 +25,7 @@ export const Navbar = () => {
           <Button
             asChild
             size="lg"
-            className="gradient-primary text-white shadow-lg hover:shadow-glow transition-smooth"
+            className="bg-white text-black hover:bg-primary hover:text-black shadow-lg hover:shadow-glow transition-smooth rounded-full px-6 font-medium"
           >
             <a
               href={APP_STORE_URL}
@@ -32,7 +33,7 @@ export const Navbar = () => {
               rel="noopener noreferrer"
               aria-label="Download the Slixo app from the Apple App Store"
             >
-              <Download className="mr-2 h-5 w-5" />
+              <Download className="mr-2 h-4 w-4" />
               Download App
             </a>
           </Button>

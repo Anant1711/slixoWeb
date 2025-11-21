@@ -23,20 +23,11 @@ export const Stats = () => {
   }, []);
 
   const stats = [
-    { icon: BookOpen, value: "10,000+", label: "Bookings Completed", color: "primary" },
-    { icon: Store, value: "500+", label: "Registered Salons", color: "secondary" },
-    { icon: Users, value: "1,000+", label: "Happy Customers", color: "accent" },
-    { icon: Star, value: "4.8", label: "Average Rating", color: "primary" },
+    { icon: BookOpen, value: "10,000+", label: "Bookings Completed" },
+    { icon: Store, value: "500+", label: "Elite Salons" },
+    { icon: Users, value: "1,000+", label: "Happy Clients" },
+    { icon: Star, value: "4.8", label: "Average Rating" },
   ];
-
-  const getColorClasses = (color: string) => {
-    const colors = {
-      primary: "text-primary",
-      secondary: "text-secondary",
-      accent: "text-accent",
-    };
-    return colors[color as keyof typeof colors];
-  };
 
   const Counter = ({ end, duration = 2000 }: { end: number; duration?: number }) => {
     const [count, setCount] = useState(0);
@@ -60,19 +51,19 @@ export const Stats = () => {
   };
 
   return (
-    <section id="stats-section" className="py-20 gradient-hero border-y border-border">
+    <section id="stats-section" className="py-24 bg-background border-y border-white/5">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
           {stats.map((stat, index) => (
-            <div 
+            <div
               key={index}
               className="text-center animate-fade-in-up"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className={`w-16 h-16 rounded-full bg-background shadow-md flex items-center justify-center mx-auto mb-4 ${getColorClasses(stat.color)}`}>
-                <stat.icon className="w-8 h-8" />
+              <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mx-auto mb-6 border border-white/10">
+                <stat.icon className="w-8 h-8 text-primary" />
               </div>
-              <div className={`text-4xl md:text-5xl font-bold mb-2 ${getColorClasses(stat.color)}`}>
+              <div className="text-4xl md:text-5xl font-bold mb-3 text-white">
                 {stat.value.includes('+') ? (
                   <>
                     <Counter end={parseInt(stat.value.replace(/\D/g, ''))} />
@@ -81,9 +72,9 @@ export const Stats = () => {
                 ) : (
                   stat.value
                 )}
-                {stat.label === "Average Rating" && "★"}
+                {stat.label === "Average Rating" && <span className="text-primary ml-1">★</span>}
               </div>
-              <p className="text-sm text-muted-foreground font-medium">{stat.label}</p>
+              <p className="text-sm text-muted-foreground font-medium uppercase tracking-widest">{stat.label}</p>
             </div>
           ))}
         </div>

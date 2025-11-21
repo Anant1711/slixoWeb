@@ -42,20 +42,24 @@ export const FAQ = () => {
   ];
 
   return (
-    <section id="faq" className="py-20 bg-background">
+    <section id="faq" className="py-32 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Frequently Asked Questions</h2>
-          <p className="text-xl text-muted-foreground">Everything you need to know about Slixo</p>
+        <div className="text-center mb-20 animate-fade-in">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">Common <span className="text-gold">Queries</span></h2>
+          <p className="text-xl text-muted-foreground font-light">Everything you need to know about Slixo</p>
         </div>
 
-        <Accordion type="single" collapsible className="max-w-3xl mx-auto">
+        <Accordion type="single" collapsible className="max-w-3xl mx-auto space-y-4">
           {faqs.map((faq, index) => (
-            <AccordionItem key={index} value={`item-${index}`} className="border-b border-border">
-              <AccordionTrigger className="text-left hover:text-primary transition-smooth py-5">
-                <span className="font-semibold text-lg">{faq.question}</span>
+            <AccordionItem
+              key={index}
+              value={`item-${index}`}
+              className="border border-white/10 rounded-lg px-6 bg-white/5 hover:bg-white/10 transition-colors duration-300"
+            >
+              <AccordionTrigger className="text-left hover:text-primary transition-colors duration-200 py-6 text-lg font-medium text-white">
+                {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground pb-5">
+              <AccordionContent className="text-muted-foreground pb-6 leading-relaxed">
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>

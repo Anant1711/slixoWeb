@@ -21,28 +21,28 @@ export const ValueProposition = () => {
   ];
 
   return (
-    <section className="py-20 bg-background">
+    <section id="features" className="py-32 bg-background relative">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12">
           {/* Customer Section */}
-          <Card className="border-2 border-primary/20 hover:border-primary/40 transition-smooth hover:shadow-lg">
-            <CardContent className="pt-8">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Heart className="w-6 h-6 text-primary" />
+          <Card className="glass-panel border-none hover:bg-white/10 transition-all duration-500 group">
+            <CardContent className="pt-10 pb-8 px-8">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 border border-primary/20">
+                  <Heart className="w-7 h-7 text-primary" />
                 </div>
-                <h2 className="text-3xl font-bold">Find & Book Your Style</h2>
+                <h2 className="text-3xl font-bold text-white">Find & Book Your Style</h2>
               </div>
-              
+
               <div className="space-y-4">
                 {customerBenefits.map((benefit, index) => (
-                  <div 
-                    key={index} 
-                    className="flex items-start gap-3 p-3 rounded-lg hover:bg-primary-light/50 transition-smooth animate-fade-in"
+                  <div
+                    key={index}
+                    className="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors duration-300 border border-white/5"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
-                    <benefit.icon className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                    <p className="text-sm text-foreground">{benefit.text}</p>
+                    <benefit.icon className="w-5 h-5 text-primary flex-shrink-0" />
+                    <p className="text-sm text-muted-foreground font-medium">{benefit.text}</p>
                   </div>
                 ))}
               </div>
@@ -50,24 +50,24 @@ export const ValueProposition = () => {
           </Card>
 
           {/* Owner Section */}
-          <Card className="border-2 border-secondary/20 hover:border-secondary/40 transition-smooth hover:shadow-lg">
-            <CardContent className="pt-8">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center">
-                  <BarChart3 className="w-6 h-6 text-secondary" />
+          <Card className="glass-panel border-none hover:bg-white/10 transition-all duration-500 group">
+            <CardContent className="pt-10 pb-8 px-8">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 border border-white/20">
+                  <BarChart3 className="w-7 h-7 text-white" />
                 </div>
-                <h2 className="text-3xl font-bold">Grow Your Salon Business</h2>
+                <h2 className="text-3xl font-bold text-white">Grow Your Salon Business</h2>
               </div>
-              
+
               <div className="space-y-4">
                 {ownerBenefits.map((benefit, index) => (
-                  <div 
-                    key={index} 
-                    className="flex items-start gap-3 p-3 rounded-lg hover:bg-secondary/10 transition-smooth animate-fade-in"
+                  <div
+                    key={index}
+                    className="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors duration-300 border border-white/5"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
-                    <benefit.icon className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
-                    <p className="text-sm text-foreground">{benefit.text}</p>
+                    <benefit.icon className="w-5 h-5 text-white flex-shrink-0" />
+                    <p className="text-sm text-muted-foreground font-medium">{benefit.text}</p>
                   </div>
                 ))}
               </div>
