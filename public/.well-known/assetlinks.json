@@ -1,0 +1,14 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "com.anantchauhan.slixo",
+            "sha256_cert_fingerprints": [
+                "D2:2A:9E:A2:6D:39:91:7F:A8:15:8A:3B:03:31:CA:9A:A9:DA:31:4A:C2:68:A2:C7:41:45:29:E9:CB:4C:A0:91"
+            ]
+        }
+    }
+]
