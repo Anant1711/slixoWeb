@@ -4,7 +4,7 @@ import { ArrowLeft, MapPin, Search, Calendar, User, CheckCircle, Smartphone, Sto
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { APP_STORE_URL } from "@/lib/store-links";
+import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/store-links";
 
 export default function HowItWorksPage() {
     const [activeTab, setActiveTab] = useState("customers");
@@ -237,10 +237,12 @@ export default function HowItWorksPage() {
                                 </a>
                             </Button>
                             <Button
-                                disabled
-                                className="bg-transparent border border-white/20 text-white hover:bg-white/10 px-8 py-6 text-lg rounded-full transition-all duration-300 opacity-50 cursor-not-allowed"
+                                asChild
+                                className="bg-transparent border border-white/20 text-white hover:bg-white/10 px-8 py-6 text-lg rounded-full transition-all duration-300 transform hover:scale-105"
                             >
-                                Download for Android (Coming Soon)
+                                <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer">
+                                    Download for Android
+                                </a>
                             </Button>
                         </div>
                     </div>
