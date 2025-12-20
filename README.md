@@ -71,3 +71,47 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+
+## Deep Linking & QR Codes
+
+### Salon Deep Links
+
+The website supports deep linking to salons via QR codes. When users scan a QR code pointing to:
+
+```
+https://slixoapp.com/salon/{salonId}
+```
+
+The behavior is:
+1. **App installed**: Opens the Slixo app directly to the salon page using the `slixo://salon/{salonId}` deep link
+2. **App not installed**: After a 2.5s timeout, shows a fallback page with download buttons for App Store/Google Play based on the user's device
+
+### Implementation Details
+
+- **Route**: `/salon/:salonId` handled by `SalonRedirect.tsx`
+- **Deep link scheme**: `slixo://salon/{salonId}`
+- **Platform detection**: Automatically detects iOS/Android and shows appropriate store
+- **Fallback**: If deep link fails, user is prompted to download the app
+
+### Testing Deep Links
+
+**On Mobile (with app installed)**:
+- Visit `https://slixoapp.com/#/salon/123` 
+- App should open immediately
+
+**On Mobile (without app)**:
+- Visit `https://slixoapp.com/#/salon/123`
+- After 2.5s, see download prompt
+
+**Desktop**:
+- Visit `https://slixoapp.com/#/salon/123`
+- Shows download page with App Store link
+
+### Store Links Configuration
+
+Store URLs are centralized in `src/lib/store-links.ts`:
+- `APP_STORE_URL`: Apple App Store listing
+- `PLAY_STORE_URL`: Google Play Store listing (update when published)
+- `DEEP_LINK_SCHEME`: The URL scheme the mobile app registers (`slixo://`)
+
+Update these constants when store listings change or when launching on new platforms.

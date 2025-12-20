@@ -11,6 +11,7 @@ import Support from "./pages/Support";
 import HowItWorksPage from "./pages/HowItWorksPage";
 import Download from "./pages/Download";
 import NotFound from "./pages/NotFound";
+import { SalonRedirect } from "./pages/SalonRedirect";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/support" element={<Support />} />
           <Route path="/how-it-works" element={<HowItWorksPage />} />
           <Route path="/download" element={<Download />} />
+          <Route path="/salon/:salonId" element={<SalonRedirect />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
