@@ -1,25 +1,15 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/store-links";
 import { Loader2, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export const SalonRedirect = () => {
-  const { salonId } = useParams<{ salonId: string }>();
+export const FindSalonsRedirect = () => {
   const [redirecting, setRedirecting] = useState(true);
   const [fallbackReady, setFallbackReady] = useState(false);
 
   useEffect(() => {
-    if (!salonId) {
-      // If no salonId, redirect to home after a moment
-      setTimeout(() => {
-        window.location.href = "/";
-      }, 2000);
-      return;
-    }
-
     // Construct the deep link URL that your app handles
-    const deepLink = `slixo://salon/${salonId}`;
+    const deepLink = `slixo://findsalons`;
 
     // Detect platform
     const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
@@ -70,7 +60,7 @@ export const SalonRedirect = () => {
       // For Android and others, use iframe approach
       attemptDeepLink();
     }
-  }, [salonId]);
+  }, []);
 
   // Helper to get the appropriate store URL
   const getStoreUrl = () => {
@@ -82,10 +72,8 @@ export const SalonRedirect = () => {
     } else if (isAndroid && PLAY_STORE_URL) {
       return PLAY_STORE_URL;
     } else if (isAndroid && !PLAY_STORE_URL) {
-      // Android but Play Store not ready yet
-      return APP_STORE_URL; // Fallback to App Store with a note
+      return APP_STORE_URL;
     }
-    // Desktop or unknown
     return APP_STORE_URL;
   };
 
@@ -98,17 +86,6 @@ export const SalonRedirect = () => {
     return "App Store";
   };
 
-  if (!salonId) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-hero">
-        <div className="text-center">
-          <Loader2 className="w-12 h-12 animate-spin mx-auto mb-4 text-primary" />
-          <p className="text-lg text-muted-foreground">Redirecting to home...</p>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-hero px-4">
       <div className="max-w-md w-full bg-card rounded-2xl shadow-xl p-8 text-center border border-border">
@@ -117,7 +94,7 @@ export const SalonRedirect = () => {
             <Loader2 className="w-16 h-16 animate-spin mx-auto mb-6 text-primary" />
             <h1 className="text-2xl font-bold mb-3">Opening Slixo App...</h1>
             <p className="text-muted-foreground mb-4">
-              Please wait while we redirect you to the salon page in the Slixo app.
+              Please wait while we redirect you to find salons in the Slixo app.
             </p>
             <p className="text-sm text-muted-foreground">
               If the app doesn't open automatically, you'll be redirected to download it.
@@ -130,7 +107,7 @@ export const SalonRedirect = () => {
             </div>
             <h1 className="text-2xl font-bold mb-3">App Not Installed?</h1>
             <p className="text-muted-foreground mb-6">
-              It looks like you don't have the Slixo app installed yet. Download it now to view this salon and book appointments!
+              It looks like you don't have the Slixo app installed yet. Download it now to find and book salons instantly!
             </p>
             <Button
               asChild
