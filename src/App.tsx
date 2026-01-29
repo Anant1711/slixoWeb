@@ -11,6 +11,7 @@ import Support from "./pages/Support";
 import NotFound from "./pages/NotFound";
 import { SalonRedirect } from "./pages/SalonRedirect";
 import { FindSalonsRedirect } from "./pages/FindSalonsRedirect";
+import { DirectDownload } from "./pages/DirectDownload";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/support" element={<Support />} />
           <Route path="/salon/:salonId" element={<SalonRedirect />} />
           <Route path="/find-salons" element={<FindSalonsRedirect />} />
+          <Route path="/download" element={<DirectDownload />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
