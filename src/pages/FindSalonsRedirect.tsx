@@ -8,9 +8,21 @@ export const FindSalonsRedirect = () => {
   const [fallbackReady, setFallbackReady] = useState(false);
 
   useEffect(() => {
-    // Construct the deep link URL that your app handles
-    // This navigates to the SalonCodeEntry screen
-    const deepLink = `slixo://find-salons`;
+    // Extract salon code from URL path if provided
+    // URL format: https://slixoapp.com/#/find-salons or https://slixoapp.com/#/find-salons/YWEW
+    const pathMatch = window.location.hash.match(/#\/find-salons(?:\/([A-Z0-9]{4}))?/);
+    const salonCode = pathMatch && pathMatch[1] ? pathMatch[1] : '';
+
+    // Construct the deep link URL
+    // If salon code provided, include it: slixo://find-salons/YWEW
+    // Otherwise just: slixo://find-salons
+    const deepLink = salonCode 
+      ? `slixo://find-salons/${salonCode}`
+      : `slixo://find-salons`;
+
+    console.log('🔗 [REDIRECT] URL hash:', window.location.hash);
+    console.log('🔗 [REDIRECT] Extracted salon code:', salonCode);
+    console.log('🔗 [REDIRECT] Deep link:', deepLink);
 
     // Detect platform
     const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
