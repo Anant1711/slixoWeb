@@ -9,7 +9,8 @@ export const FindSalonsRedirect = () => {
 
   useEffect(() => {
     // Construct the deep link URL that your app handles
-    const deepLink = `slixo://findsalons`;
+    // This navigates to the SalonCodeEntry screen
+    const deepLink = `slixo://find-salons`;
 
     // Detect platform
     const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
