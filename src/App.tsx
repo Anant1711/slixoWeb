@@ -29,6 +29,7 @@ const App = () => (
           <Route path="/support" element={<Support />} />
           <Route path="/salon/:salonId" element={<SalonRedirect />} />
           <Route path="/find-salons" element={<FindSalonsRedirect />} />
+          <Route path="/find-salons/:salonCode" element={<FindSalonsRedirect />} />
           <Route path="/download" element={<DirectDownload />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

@@ -9,19 +9,24 @@ export const FindSalonsRedirect = () => {
 
   useEffect(() => {
     // Extract salon code from URL path if provided
-    // URL format: https://slixoapp.com/#/find-salons or https://slixoapp.com/#/find-salons/YWEW
-    const pathMatch = window.location.hash.match(/#\/find-salons(?:\/([A-Z0-9]{4}))?/);
-    const salonCode = pathMatch && pathMatch[1] ? pathMatch[1] : '';
+    // URL format: https://slixoapp.com/#/find-salons or https://slixoapp.com/#/find-salons/SLXOYWEW
+    const pathMatch = window.location.hash.match(/#\/find-salons(?:\/([A-Z0-9]{8}))?/);
+    const fullSalonCode = pathMatch && pathMatch[1] ? pathMatch[1] : '';
+
+    // Extract just the 4-character code (remove SLXO prefix if present)
+    // SLXOYWEW -> YWEW
+    const salonCode = fullSalonCode.replace(/^SLXO/, '') || '';
 
     // Construct the deep link URL
-    // If salon code provided, include it: slixo://find-salons/YWEW
+    // If salon code provided, include the full code: slixo://find-salons/SLXOYWEW
     // Otherwise just: slixo://find-salons
-    const deepLink = salonCode 
-      ? `slixo://find-salons/${salonCode}`
+    const deepLink = fullSalonCode 
+      ? `slixo://find-salons/${fullSalonCode}`
       : `slixo://find-salons`;
 
     console.log('🔗 [REDIRECT] URL hash:', window.location.hash);
-    console.log('🔗 [REDIRECT] Extracted salon code:', salonCode);
+    console.log('🔗 [REDIRECT] Extracted full salon code:', fullSalonCode);
+    console.log('🔗 [REDIRECT] Extracted short code:', salonCode);
     console.log('🔗 [REDIRECT] Deep link:', deepLink);
 
     // Detect platform
